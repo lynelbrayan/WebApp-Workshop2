@@ -7,3 +7,10 @@ CREATE TABLE IF NOT EXISTS  auth_user (
     zip_code VARCHAR(8),
     PRIMARY KEY (id)
 );
+
+CREATE TABLE IF NOT EXISTS product (
+    id SERIAL,
+    product_name VARCHAR(48),
+    product_price INT,
+    PRIMARY KEY (id)
+);

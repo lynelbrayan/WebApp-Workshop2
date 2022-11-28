@@ -1,6 +1,6 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { deleteUser, getUser, insertUserObject, responseObject } from 'src/common/dto/api.dto';
+import { deleteUser, getUser, insertUserObject, login, responseObject } from 'src/common/dto/api.dto';
 import { UserEntity } from 'src/common/entity/authuser.entity';
 import { ILike, Like, Repository } from 'typeorm';
  
@@ -140,5 +140,22 @@ export class ApiService {
         }
         return result;
     }
+    async login(data: login): Promise<responseObject> {
+        const dbResult = await this.user.find({
+            where: [
+                { emailId: data.email },
+                { password: data.pass }
+            ]
+        })
+
+        console.log(dbResult);
+        const result :responseObject = {
+            status: "success",
+            message: "retrived data"
+        }
+        return result;
+    }
+
+
  }
  

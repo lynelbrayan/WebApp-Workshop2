@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
-import { insertUserObject, responseObject } from 'src/common/dto/api.dto';
+import { insertUserObject, responseObject,login} from 'src/common/dto/api.dto';
 import { UserEntity } from 'src/common/entity/authuser.entity';
 import { ApiService } from './api.service';
  
@@ -45,5 +45,11 @@ deleteUser(@Body() userData: UserEntity) : Promise<responseObject> {
 findUser (@Query('name') name: any) {
     return this.apiService.findUser(name);
 }
+
+@Post('login')
+login(@Body() data:login):Promise<responseObject>{
+    return this.apiService.login(data);
+}
+
 
 }

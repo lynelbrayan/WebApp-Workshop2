@@ -32,4 +32,11 @@ export class getUser {
     message: string;
     data?: object;
  }
+
+ export class login {
+   @IsEmail()
+   email:string;
+   pass:string;
+ 
+  }
  
